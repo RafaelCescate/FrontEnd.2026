@@ -1,5 +1,5 @@
-const normal = document.getElementById("normal");
-const pizza = document.getElementById("pizza");
+const rostinho = document.getElementById("rostinho");
+const alimento = document.getElementById("pizza");
 
 const estados = {
     normal: "normal.png",
@@ -24,12 +24,28 @@ function controlador (){
             console.log("tempo:",contador);
 
             if(contador == 30){
-                normal.src = estados.bravo
+                rostinho.src = estados.bravo
             }
             if(contador == 60){
-                normal.src = estados.morto
+                rostinho.src = estados.morto
             }
         }, 1000);    
+}
+
+function alimentar (){
+    
+    rostinho.src= estados.comendo
+    contador= 0;
+    console.log("comeu");
+
+    if(time_click) clearInterval(time_click)
+
+        time_click = setTimeout( () =>{
+            rostinho.src = estados.feliz
+            time_out = setTimeout(() => {
+                rostinho.src = estados.normal
+            },2000);
+        },1000);
 }
 
 controlador();
