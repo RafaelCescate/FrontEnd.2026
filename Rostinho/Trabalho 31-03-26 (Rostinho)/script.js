@@ -7,9 +7,10 @@ const estados = {
     feliz: "feliz.png",
     comendo: "comendo.png",
     morto: "morto.png",
-    cenarioDia: "cenarioDia.png",
-    cenarioNoite: "cenarioNoite.png",
 }
+
+const cenarioDia = "cenarioDia.png";
+const cenarioNoite = "cenarioNoite.png";
 
 let horas = 0;
 let contador = 0;
@@ -57,12 +58,15 @@ function atualizarFundo() {
     horas = setInterval(() => {
     horas++;
     
-    if (horas >= 12) {
-        document.body.style.backgroundImage = estados.cenarioNoite;
+
+    if (horas >= 120) {
+        document.body.style.backgroundImage = `url('${cenarioNoite}')`;
+        console.log("Noite");
     } else {
-        document.body.style.backgroundImage = estados.cenarioDia;
+        document.body.style.backgroundImage = `url('${cenarioDia}')`;
+        console.log("Dia");
     }
-    if(horas <=24) horas =0;
+    if(horas >=240) horas =0;
 
     }, 100);
 }
