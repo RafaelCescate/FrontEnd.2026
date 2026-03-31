@@ -7,8 +7,11 @@ const estados = {
     feliz: "feliz.png",
     comendo: "comendo.png",
     morto: "morto.png",
+    cenarioDia: "cenarioDia.png",
+    cenarioNoite: "cenarioNoite.png",
 }
 
+let horas = 0;
 let contador = 0;
 let intervalo = null;
 let time_click = null;
@@ -48,4 +51,21 @@ function alimentar (){
         },1000);
 }
 
+function atualizarFundo() {
+    if (horas) clearInterval(horas);
+
+    horas = setInterval(() => {
+    horas++;
+    
+    if (horas >= 12) {
+        document.body.style.backgroundImage = estados.cenarioNoite;
+    } else {
+        document.body.style.backgroundImage = estados.cenarioDia;
+    }
+    if(horas <=24) horas =0;
+
+    }, 100);
+}
+
 controlador();
+atualizarFundo();
